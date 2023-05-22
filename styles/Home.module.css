@@ -94,3 +94,8 @@
 .lista{
   list-style: none;
 }
+
+.linkteam{
+  text-decoration: none;
+  color: black;
+}
