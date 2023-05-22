@@ -14,9 +14,9 @@ export default function Home({ teams }) {
         <h1>Drużyny NBA</h1>
         <ul className={styles.lista}>
           {teams.data.map((team) => (
-            <li key={team.name}>
+            <li key={team.full_name}>
               <Link className={styles.linkteam} href={`/${team.id}`}>
-                {team.name}
+                {team.full_name}
               </Link>
             </li>
           ))}
