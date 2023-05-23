@@ -5,16 +5,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  font-size: 120%;
 }
 
 .container1 {
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
-
+  font-size: 150%;
   justify-content: center;
-  
 }
 
 @media (max-width: 600px) {
@@ -24,29 +23,28 @@
   }
 }
 
-
-.lista{
+.lista {
   list-style: none;
   text-align: center;
   padding: 0;
 }
 
-.linkteam{
+.linkteam {
   text-decoration: none;
   color: black;
 }
 
-.heading1{
+.heading1 {
   color: orange;
   text-align: center;
 }
 
-.info{
+.info {
   width: 50%;
   justify-content: left;
   text-align: center;
 }
 
-.infoPlayers{
+.infoPlayers {
   width: 50%;
 }

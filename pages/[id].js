@@ -11,9 +11,9 @@ export default function Team({ team, players }) {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-     
       <div className={styles.info}>
-        <h1 className={styles.heading1}>{team.full_name}</h1>
+        <h1>Informacje o drużynie:</h1>
+        <h2 className={styles.heading1}>{team.full_name}</h2>
         <p>
           <b>Abbreviation:</b> {team.abbreviation}
         </p>
@@ -24,19 +24,19 @@ export default function Team({ team, players }) {
           <b>Conference:</b> {team.conference}
         </p>
         <p>
-          <b>Division</b> {team.division}
+          <b>Division:</b> {team.division}
         </p>
-        </div>
-        <div className={styles.infoPlayers}>
+      </div>
+      <div className={styles.infoPlayers}>
         <ul className={styles.lista}>
-        <h1>Lista graczy</h1>
+          <h1>Lista graczy:</h1>
           {players.data.map((player) => (
             <li key={player.id}>
               {player.first_name} {player.last_name}
             </li>
           ))}
         </ul>
-        </div>
+      </div>
     </div>
   );
 }
@@ -58,7 +58,7 @@ export async function getStaticProps(context) {
   const team = await odp.json();
 
   const odpPlayer = await fetch(
-    `https://www.balldontlie.io/api/v1/players?team_id=${context.params.id}>`
+    `https://www.balldontlie.io/api/v1/players?team_id=${context.params.id}`
   );
   const players = await odpPlayer.json();
 
