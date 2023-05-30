@@ -30,11 +30,13 @@ export default function Team({ team, players }) {
       <div className={styles.infoPlayers}>
         <ul className={styles.lista}>
           <h1>Lista graczy:</h1>
-          {players.data.map((player) => (
-            <li key={player.id}>
-              {player.first_name} {player.last_name}
-            </li>
-          ))}
+          {players.data
+            .filter((player) => player.team.id === team.id)
+            .map((player) => (
+              <li key={player.id}>
+                {player.first_name} {player.last_name}
+              </li>
+            ))}
         </ul>
       </div>
     </div>
@@ -57,9 +59,7 @@ export async function getStaticProps(context) {
   );
   const team = await odp.json();
 
-  const odpPlayer = await fetch(
-    `https://www.balldontlie.io/api/v1/players`
-  );
+  const odpPlayer = await fetch(`https://www.balldontlie.io/api/v1/players`);
   const players = await odpPlayer.json();
 
   return {
