@@ -16,13 +16,6 @@
   justify-content: center;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
 .lista {
   list-style: none;
   text-align: center;
@@ -32,6 +25,11 @@
 .linkteam {
   text-decoration: none;
   color: black;
+  transition: font-size 0.2s;
+}
+.linkteam:hover {
+  font-size: 105%;
+  color: orange;
 }
 
 .heading1 {
@@ -47,4 +45,11 @@
 
 .infoPlayers {
   width: 50%;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
 }
