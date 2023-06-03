@@ -47,6 +47,51 @@
   width: 50%;
 }
 
+
+.modalGracze{
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  padding-left: 10px;
+}
+
+
+.modalGraczeOv{
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.buttonClose{
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.buttonClose:hover{
+  background-color: red;
+}
+
+.gracz{
+  cursor: pointer;
+  font-weight: lighter;
+  
+ 
+}
+
+.gracz:hover{
+  font-size: 105%;
+  color: orange;
+  transition: font-size 0.2s;
+}
+
+.imieZawodnika{
+  color: orange;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
