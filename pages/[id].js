@@ -69,19 +69,19 @@ export default function Team({ team, players }) {
                 {selectedPlayer.first_name} {selectedPlayer.last_name}{" "}
               </b>
             </h1>
-            <h2>
+            <p className={styles.infoGracz}>
               <b>Drużyna: </b>
               {team.full_name}
-            </h2>
+            </p>
 
-            <p>
+            <p className={styles.infoGracz}>
               <b>Pozycja:</b> {selectedPlayer.position}
             </p>
-            <p>
+            <p className={styles.infoGracz}>
               <b>Wzrost:</b> {selectedPlayer.height_feet} feet{" "}
               {selectedPlayer.height_inches} inches
             </p>
-            <p>
+            <p className={styles.infoGracz}>
               <b>Waga:</b> {selectedPlayer.weight_pounds} pounds
             </p>
           </div>
