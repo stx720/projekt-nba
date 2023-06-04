@@ -47,11 +47,10 @@
   width: 50%;
 }
 
-
-.modalGracze{
+.modalGracze {
   width: 400px;
-  height: 400px;
-  border: 1px solid black;
+  height: 350px;
+  border: 2px solid black;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -60,36 +59,43 @@
   padding-left: 10px;
 }
 
-
-.modalGraczeOv{
+.modalGraczeOv {
   position: fixed;
   inset: 0px;
   background-color: rgba(255, 255, 255, 0.75);
 }
-.buttonClose{
+.buttonClose {
   border-radius: 5px;
-  margin-top: 20px;
+  position: absolute;
+  top: 20px;
+  right: 10px;
 }
 
-.buttonClose:hover{
+.buttonClose:hover {
   background-color: red;
+  cursor: pointer;
 }
 
-.gracz{
+.gracz {
   cursor: pointer;
   font-weight: lighter;
-  
- 
 }
 
-.gracz:hover{
+.gracz:hover {
   font-size: 105%;
   color: orange;
   transition: font-size 0.2s;
 }
 
-.imieZawodnika{
+.imieZawodnika {
   color: orange;
+  margin-top: 50px;
+  font-size: 220%;
+}
+
+.infoGracz {
+  font-size: 130%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (max-width: 600px) {
