@@ -62,7 +62,7 @@
 .modalGraczeOv {
   position: fixed;
   inset: 0px;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .buttonClose {
   border-radius: 5px;
@@ -96,6 +96,24 @@
 .infoGracz {
   font-size: 130%;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.daneTab{
+  border: 1px solid black;
+}
+
+.tabelkaMecz{
+  
+  border: 1px solid black;
+  width: 100%;
+  
+}
+
+.tabelkaMecz1{
+  overflow-y: scroll;
+  border: 1px solid black;
+  height: 400px;
+  
 }
 
 @media (max-width: 600px) {
