@@ -5,9 +5,10 @@ import { useState } from "react";
 
 Modal.setAppElement("#__next");
 
-export default function Team({ team, players }) {
+export default function Team({ team, players, gry }) {
   console.log(team);
   console.log(players);
+  console.log(gry);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   function FunkcjaGracze(player) {
@@ -35,15 +36,55 @@ export default function Team({ team, players }) {
         <p>
           <b>Division:</b> {team.division}
         </p>
+
+        <h1>Rozegrane mecze:</h1>
+        <div className={styles.tabelkaMecz1}>
+          <table className={styles.tabelkaMecz}>
+            {gry.data.map((game) => (
+              <tbody key={game.id}>
+                <tr>
+                  <th className={styles.daneTab}>Data</th>
+                  <th className={styles.daneTab}>Druzyny</th>
+                  <th className={styles.daneTab}>Wynik</th>
+                </tr>
+                <tr>
+                  <td className={styles.daneTab}>
+                    <p>
+                      <b>Data:</b> {game.date.slice(0, 10)}
+                    </p>
+                  </td>
+                  <td className={styles.daneTab}>
+                    <p>
+                      <b>{game.home_team.full_name}</b> vs{" "}
+                      <b>{game.visitor_team.full_name} </b>
+                    </p>
+                  </td>
+                  <td className={styles.daneTab}>
+                    <p>
+                      <b>
+                        Wynik: {game.home_team_score} -{" "}
+                        {game.visitor_team_score}
+                      </b>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </div>
       </div>
-      
+
       <div className={styles.infoPlayers}>
         <ul className={styles.lista}>
           <h1>Lista graczy:</h1>
           {players.data
             .filter((player) => player.team.id === team.id)
             .map((player) => (
-              <li key={player.id} className={styles.gracz} onClick={() => FunkcjaGracze(player)}>
+              <li
+                key={player.id}
+                className={styles.gracz}
+                onClick={() => FunkcjaGracze(player)}
+              >
                 {player.first_name} {player.last_name}
               </li>
             ))}
@@ -55,11 +96,12 @@ export default function Team({ team, players }) {
         onRequestClose={() => setSelectedPlayer(null)}
         contentLabel="Informacje o zawodniku"
         className={styles.modalGracze}
-        overlayClassName={styles.modalGraczeOv}>
-
+        overlayClassName={styles.modalGraczeOv}
+      >
         <button
           className={styles.buttonClose}
-          onClick={() => setSelectedPlayer(null)}>
+          onClick={() => setSelectedPlayer(null)}
+        >
           &times;
         </button>
         {selectedPlayer && (
@@ -102,15 +144,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const odp = await fetch(
-    `https://www.balldontlie.io/api/v1/teams/${context.params.id}`
-  );
+  const odp = await fetch(`https://www.balldontlie.io/api/v1/teams/${context.params.id}`);
   const team = await odp.json();
 
   const odpPlayer = await fetch(`https://www.balldontlie.io/api/v1/players`);
   const players = await odpPlayer.json();
 
+  const odpGra = await fetch(`https://www.balldontlie.io/api/v1/games?team_ids[]=${context.params.id}`);
+  const gry = await odpGra.json();
   return {
-    props: { team, players },
+    props: { team, players, gry },
   };
 }
