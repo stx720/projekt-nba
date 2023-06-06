@@ -10,10 +10,16 @@ export default function Team({ team, players, gry }) {
   console.log(players);
   console.log(gry);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [selectedGame, setSelectedGame] = useState(null);
 
   function FunkcjaGracze(player) {
     setSelectedPlayer(player);
   }
+
+  function FunkcjaMecz(game) {
+    setSelectedGame(game);
+  }
+
   return (
     <div className={styles.container1}>
       <Head>
@@ -43,23 +49,32 @@ export default function Team({ team, players, gry }) {
             {gry.data.map((game) => (
               <tbody key={game.id}>
                 <tr>
-                  <th className={styles.daneTab}>Data</th>
-                  <th className={styles.daneTab}>Druzyny</th>
-                  <th className={styles.daneTab}>Wynik</th>
+                  <th className={styles.nagTab}>Data</th>
+                  <th className={styles.nagTab}>Drużyny</th>
+                  <th className={styles.nagTab}>Wynik</th>
                 </tr>
                 <tr>
-                  <td className={styles.daneTab}>
+                  <td
+                    onClick={() => FunkcjaMecz(game)}
+                    className={styles.daneTab}
+                  >
                     <p>
                       <b>Data:</b> {game.date.slice(0, 10)}
                     </p>
                   </td>
-                  <td className={styles.daneTab}>
+                  <td
+                    onClick={() => FunkcjaMecz(game)}
+                    className={styles.daneTab}
+                  >
                     <p>
                       <b>{game.home_team.full_name}</b> vs{" "}
                       <b>{game.visitor_team.full_name} </b>
                     </p>
                   </td>
-                  <td className={styles.daneTab}>
+                  <td
+                    onClick={() => FunkcjaMecz(game)}
+                    className={styles.daneTab}
+                  >
                     <p>
                       <b>
                         Wynik: {game.home_team_score} -{" "}
@@ -129,6 +144,46 @@ export default function Team({ team, players, gry }) {
           </div>
         )}
       </Modal>
+
+      <Modal
+        isOpen={selectedGame !== null}
+        onRequestClose={() => setSelectedGame(null)}
+        contentLabel="Informacje o meczu"
+        className={styles.modalGry}
+        overlayClassName={styles.modalGryOv}
+      >
+        <button
+          className={styles.buttonClose}
+          onClick={() => setSelectedGame(null)}
+        >
+          &times;
+        </button>
+        {selectedGame && (
+          <div>
+            <h1 className={styles.naglowekMecze}>
+              {selectedGame.home_team.full_name} vs{" "}
+              {selectedGame.visitor_team.full_name}
+            </h1>
+            <p className={styles.infoGracz}>
+              <b>Data:</b> {selectedGame.date.slice(0, 10)}
+            </p>
+            <p className={styles.infoGracz}>
+              <b>Wynik:</b> {selectedGame.home_team_score} -{" "}
+              {selectedGame.visitor_team_score}
+            </p>
+
+            <p className={styles.infoGracz}>
+              <b>Okresy: </b> {selectedGame.period}
+            </p>
+            <p className={styles.infoGracz}>
+              <b>Postseason: </b> {selectedGame.postseason ? "Tak" : "Nie"}
+            </p>
+            <p className={styles.infoGracz}>
+              <b>Sezon: </b> {selectedGame.season}
+            </p>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
@@ -144,13 +199,17 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const odp = await fetch(`https://www.balldontlie.io/api/v1/teams/${context.params.id}`);
+  const odp = await fetch(
+    `https://www.balldontlie.io/api/v1/teams/${context.params.id}`
+  );
   const team = await odp.json();
 
   const odpPlayer = await fetch(`https://www.balldontlie.io/api/v1/players`);
   const players = await odpPlayer.json();
 
-  const odpGra = await fetch(`https://www.balldontlie.io/api/v1/games?team_ids[]=${context.params.id}`);
+  const odpGra = await fetch(
+    `https://www.balldontlie.io/api/v1/games?team_ids[]=${context.params.id}`
+  );
   const gry = await odpGra.json();
   return {
     props: { team, players, gry },
