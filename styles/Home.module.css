@@ -127,8 +127,9 @@
 }
 
 tr:hover .daneTab {
-  border: 2px solid orange;
+  border: 2px solid blue;
   cursor: pointer;
+  color: orange;
 }
 .nagTab {
   border: 1px solid black;
