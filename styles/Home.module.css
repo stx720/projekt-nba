@@ -64,6 +64,29 @@
   inset: 0px;
   background-color: rgba(255, 255, 255, 0.9);
 }
+
+.modalGry {
+  width: 500px;
+  height: 350px;
+  border: 2px solid black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  padding-left: 10px;
+}
+
+.modalGryOv {
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.naglowekMecze {
+  margin-top: 50px;
+  color: orange;
+}
 .buttonClose {
   border-radius: 5px;
   position: absolute;
@@ -98,22 +121,28 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.daneTab{
+.daneTab {
+  border: 1px solid black;
+  transition: border 0.1s;
+}
+
+tr:hover .daneTab {
+  border: 2px solid orange;
+  cursor: pointer;
+}
+.nagTab {
   border: 1px solid black;
 }
 
-.tabelkaMecz{
-  
+.tabelkaMecz {
   border: 1px solid black;
   width: 100%;
-  
 }
 
-.tabelkaMecz1{
+.tabelkaMecz1 {
   overflow-y: scroll;
   border: 1px solid black;
   height: 400px;
-  
 }
 
 @media (max-width: 600px) {
