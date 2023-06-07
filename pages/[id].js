@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Modal from "react-modal";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 Modal.setAppElement("#__next");
 
@@ -11,6 +12,7 @@ export default function Team({ team, players, gry }) {
   console.log(gry);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
+  const router = useRouter();
 
   function FunkcjaGracze(player) {
     setSelectedPlayer(player);
@@ -28,6 +30,9 @@ export default function Team({ team, players, gry }) {
       </Head>
 
       <div className={styles.info}>
+        <p onClick={() => router.back()} className={styles.goBack}>
+          <b>← Wstecz</b>
+        </p>
         <h1>Informacje o drużynie:</h1>
         <h2 className={styles.heading1}>{team.full_name}</h2>
         <p>
