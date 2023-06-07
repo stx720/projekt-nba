@@ -12,7 +12,7 @@ export default function Home({ teams }) {
       </Head>
 
       <main>
-        <h1>Drużyny NBA</h1>
+        <h1 className={styles.nagIndex}>Drużyny NBA</h1>
         <ul className={styles.lista}>
           {teams.data.map((team) => (
             <li className={styles.elementListy} key={team.full_name}>
