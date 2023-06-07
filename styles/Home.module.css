@@ -37,6 +37,15 @@
   text-align: center;
 }
 
+.goBack {
+  position: absolute;
+  text-align: left;
+}
+
+.goBack:hover {
+  cursor: pointer;
+  color: blue;
+}
 
 .info {
   width: 50%;
