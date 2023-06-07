@@ -37,6 +37,7 @@
   text-align: center;
 }
 
+
 .info {
   width: 50%;
   justify-content: left;
@@ -57,6 +58,7 @@
   transform: translate(-50%, -50%);
   border-radius: 20px;
   padding-left: 10px;
+  background-color: white;
 }
 
 .modalGraczeOv {
@@ -66,7 +68,7 @@
 }
 
 .modalGry {
-  width: 500px;
+  width: auto;
   height: 350px;
   border: 2px solid black;
   position: fixed;
@@ -75,6 +77,7 @@
   transform: translate(-50%, -50%);
   border-radius: 20px;
   padding-left: 10px;
+  background-color: white;
 }
 
 .modalGryOv {
@@ -86,6 +89,7 @@
 .naglowekMecze {
   margin-top: 50px;
   color: orange;
+  margin-right: 5px;
 }
 .buttonClose {
   border-radius: 5px;
@@ -122,14 +126,16 @@
 }
 
 .daneTab {
-  border: 1px solid black;
+  border: 2px solid black;
   transition: border 0.1s;
+  transition: font-size 0.2s;
 }
 
 tr:hover .daneTab {
   border: 2px solid blue;
   cursor: pointer;
   color: orange;
+  font-size: 103%;
 }
 .nagTab {
   border: 1px solid black;
