@@ -155,8 +155,9 @@ tr:hover .daneTab {
 }
 
 .tabelkaMecz {
-  border: 1px solid black;
+  border: 2px solid black;
   width: 100%;
+  border-collapse: collapse;
 }
 
 .tabelkaMecz1 {
