@@ -213,7 +213,7 @@ export async function getStaticProps(context) {
   const players = await odpPlayer.json();
 
   const odpGra = await fetch(
-    `https://www.balldontlie.io/api/v1/games?team_ids[]=${context.params.id}`
+    `https://www.balldontlie.io/api/v1/games?per_page=100&team_ids[]=${context.params.id}`
   );
   const gry = await odpGra.json();
   return {
