@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Modal from "react-modal";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import NextNProgress from 'nextjs-progressbar';
 
 Modal.setAppElement("#__next");
 
@@ -30,6 +31,7 @@ export default function Team({ team, players, gry }) {
       </Head>
 
       <div className={styles.info}>
+      <NextNProgress color='orange'/>
         <p onClick={() => router.back()} className={styles.goBack}>
           <b>← Wstecz</b>
         </p>
