@@ -8,7 +8,7 @@
   font-size: 120%;
 }
 
-.nagIndex{
+.nagIndex {
   font-size: 225%;
 }
 
@@ -164,6 +164,42 @@ tr:hover .daneTab {
   overflow-y: scroll;
   border: 1px solid black;
   height: 400px;
+}
+
+.goSearch {
+  position: absolute;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 25px;
+  font-size: 110%;
+  text-decoration: none;
+}
+
+.linkSearch {
+  text-decoration: none;
+  color: black;
+  transition: font-size 0.2s;
+}
+
+.linkSearch:hover {
+  color: blue;
+  font-size: 120%;
+}
+
+.gobackSearch {
+  top: 0;
+  left: 0;
+  position: absolute;
+  margin-left: 20px;
+  font-size: 125%;
+}
+
+.gobackSearch:hover {
+  cursor: pointer;
+  color: blue;
 }
 
 @media (max-width: 600px) {
