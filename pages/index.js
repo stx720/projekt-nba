@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import NextNProgress from 'nextjs-progressbar';
+import NextNProgress from "nextjs-progressbar";
 export default function Home({ teams }) {
   console.log(teams);
   return (
@@ -11,9 +11,16 @@ export default function Home({ teams }) {
         <title>NBA</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-
+      <p className={styles.goSearch}>
+        <b>
+          <Link className={styles.linkSearch} href={`/search`}>
+            Wyszukiwarka zawodników ➜
+          </Link>
+        </b>
+      </p>
       <main>
-      <NextNProgress color='orange'/>
+        <NextNProgress color="orange" />
+
         <h1 className={styles.nagIndex}>Drużyny NBA</h1>
         <ul className={styles.lista}>
           {teams.data.map((team) => (
