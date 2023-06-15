@@ -5,9 +5,9 @@ import Image from "next/image";
 import NextNProgress from "nextjs-progressbar";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 export default function Home({ teams }) {
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function Home({ teams }) {
   const handleSearch = async (event) => {
     event.preventDefault();
     if (!searchTerm) {
-      toast.error('Wprowadź imię lub nazwisko zawodnika');
+      toast.error("Wprowadź imię lub nazwisko zawodnika");
       return;
     }
 
@@ -54,7 +54,9 @@ export default function Home({ teams }) {
             placeholder="Szukaj zawodnika..."
             className={styles.inputSearch}
           />
-          <button className={styles.buttonSearch} type="submit">Wyszukaj</button>
+          <button className={styles.buttonSearch} type="submit">
+            Wyszukaj
+          </button>
         </form>
         {searchResults.length > 0 && (
           <ul className={styles.ulSearch}>
