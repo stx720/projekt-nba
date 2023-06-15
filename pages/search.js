@@ -22,7 +22,7 @@ export default function Home({ teams }) {
     }
 
     const odpSearch = await fetch(
-      `https://www.balldontlie.io/api/v1/players?search=${searchTerm}`
+      `https://www.balldontlie.io/api/v1/players?search=${searchTerm}&per_page=100`
     );
     const search = await odpSearch.json();
 
