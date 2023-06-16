@@ -281,6 +281,25 @@ tr:hover .daneTab {
   margin-left: 5px;
 }
 
+.favoritesContainer{
+  position: absolute;
+  left: 10px;
+  top: 120px;
+  text-align: center;
+}
+
+.favoritePlayer{
+  list-style: none;
+  color: orange;
+  font-weight: bold;
+}
+
+.favPrzycisk {
+  cursor: pointer;
+  margin-left: 5px;
+  color: red;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
