@@ -30,7 +30,7 @@ export default function Home({ teams }) {
   };
   console.log(teams);
   return (
-    <div className={styles.container}>
+    <div className={styles.searchContainer}>
       <Head>
         <title>NBA</title>
         <link rel="icon" href="/favicon.png" />
@@ -46,7 +46,7 @@ export default function Home({ teams }) {
           </b>
         </p>
         <h1 className={styles.nagIndex}>Wyszukaj zawodnika:</h1>
-        <form onSubmit={handleSearch}>
+        <form className={styles.formSearch} onSubmit={handleSearch}>
           <input
             type="text"
             value={searchTerm}
@@ -55,13 +55,13 @@ export default function Home({ teams }) {
             className={styles.inputSearch}
           />
           <button className={styles.buttonSearch} type="submit">
-            Wyszukaj
+            <Image src="/search.svg" width={25} height={15} />
           </button>
         </form>
         {searchResults.length > 0 && (
           <ul className={styles.ulSearch}>
             {searchResults.map((player) => (
-              <li key={player.id}>
+              <li className={styles.wynikSearch} key={player.id}>
                 {player.first_name} {player.last_name}
               </li>
             ))}
