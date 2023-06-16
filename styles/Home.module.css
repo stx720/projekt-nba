@@ -281,14 +281,14 @@ tr:hover .daneTab {
   margin-left: 5px;
 }
 
-.favoritesContainer{
+.favoritesContainer {
   position: absolute;
   left: 10px;
   top: 120px;
   text-align: center;
 }
 
-.favoritePlayer{
+.favoritePlayer {
   list-style: none;
   color: orange;
   font-weight: bold;

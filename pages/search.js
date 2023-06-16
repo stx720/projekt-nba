@@ -4,10 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import NextNProgress from "nextjs-progressbar";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import cookie from "js-cookie";
+import { useState, useEffect } from "react";
 
 export default function Home({ teams }) {
   const router = useRouter();
@@ -17,8 +18,22 @@ export default function Home({ teams }) {
   const [hoveredFavoritePlayer, setHoveredFavoritePlayer] = useState(null);
   const [favorites, setFavorites] = useState([]);
 
+  useEffect(() => {
+    //czyta ulubionych zawodników z cookies
+    const favoritesFromCookies = cookie.get("favorites");
+    if (favoritesFromCookies) {
+      setFavorites(JSON.parse(favoritesFromCookies));
+    }
+  }, []);
+
+  useEffect(() => {
+    // zapisuje ulubionych zawodników do cookies przy każdej zmianie
+    cookie.set("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
   const addToFavorites = (player) => {
-    setFavorites([...favorites, player]);
+    const updatedFavorites = [...favorites, player];
+    setFavorites(updatedFavorites);
     toast.success("Dodano zawodnika do ulubionych");
   };
 
@@ -44,7 +59,7 @@ export default function Home({ teams }) {
 
     setSearchResults(search.data || []);
   };
-  console.log(teams);
+
   return (
     <div className={styles.searchContainer}>
       <Head>
