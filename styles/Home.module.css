@@ -276,6 +276,11 @@ tr:hover .daneTab {
   cursor: pointer;
 }
 
+.ulubPrzycisk {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
