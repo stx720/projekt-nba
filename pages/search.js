@@ -13,6 +13,13 @@ export default function Home({ teams }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [hoveredPlayer, setHoveredPlayer] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+
+  const addToFavorites = (player) => {
+    setFavorites([...favorites, player]);
+    toast.success("Dodano zawodnika do ulubionych");
+  };
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -30,6 +37,7 @@ export default function Home({ teams }) {
   };
   console.log(teams);
   return (
+    
     <div className={styles.searchContainer}>
       <Head>
         <title>NBA</title>
@@ -39,35 +47,41 @@ export default function Home({ teams }) {
         <b>← Wstecz</b>
       </p>
       <main>
-        <NextNProgress color="orange" />
-        <p className={styles.goSearch}>
-          <b>
-            <Link href="search.js"></Link>
-          </b>
-        </p>
-        <h1 className={styles.nagIndex}>Wyszukaj zawodnika:</h1>
-        <form className={styles.formSearch} onSubmit={handleSearch}>
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Szukaj zawodnika..."
-            className={styles.inputSearch}
-          />
-          <button className={styles.buttonSearch} type="submit">
-            <Image src="/search.svg" width={25} height={15} />
-          </button>
-        </form>
-        {searchResults.length > 0 && (
-          <ul className={styles.ulSearch}>
-            {searchResults.map((player) => (
-              <li className={styles.wynikSearch} key={player.id}>
-                {player.first_name} {player.last_name}
-              </li>
-            ))}
-          </ul>
-        )}
+      <NextNProgress color="orange" />
+      <h1 className={styles.nagIndex}>Wyszukaj zawodnika:</h1>
+      <form className={styles.formSearch} onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Szukaj zawodnika..."
+          className={styles.inputSearch}
+        />
+        <button className={styles.buttonSearch} type="submit">
+          <Image src="/search.svg" width={25} height={15} />
+        </button>
+      </form>
+      {searchResults.length > 0 && (
+        <ul className={styles.ulSearch}>
+          {searchResults.map((player, index) => (
+            <li
+              className={styles.wynikSearch} key={player.id} onMouseEnter={() => setHoveredPlayer(index)} onMouseLeave={() => setHoveredPlayer(null)}>
+              {player.first_name} {player.last_name}
+              {hoveredPlayer === index && (
+                <Image
+                  className={styles.ulubPrzycisk}
+                  src={`/star.svg`}
+                  width={16}
+                  height={16}
+                  onClick={() => addToFavorites(player)}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
       </main>
+
       <ToastContainer />
     </div>
   );
