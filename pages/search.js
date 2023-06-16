@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 import cookie from "js-cookie";
 import { useState, useEffect } from "react";
 
-export default function Home({ teams }) {
+export default function Home() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -32,6 +32,11 @@ export default function Home({ teams }) {
   }, [favorites]);
 
   const addToFavorites = (player) => {
+    const isAlreadyFavorite = favorites.find((favPlayer) => favPlayer.id === player.id);
+    if (isAlreadyFavorite) {
+      toast.info("Ten zawodnik jest już na liście ulubionych!");
+      return;
+    }
     const updatedFavorites = [...favorites, player];
     setFavorites(updatedFavorites);
     toast.success("Dodano zawodnika do ulubionych");
@@ -77,7 +82,7 @@ export default function Home({ teams }) {
           <input
             type="text"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(szukaj) => setSearchTerm(szukaj.target.value)}
             placeholder="Szukaj zawodnika..."
             className={styles.inputSearch}
           />
@@ -143,11 +148,3 @@ export default function Home({ teams }) {
   );
 }
 
-export async function getStaticProps() {
-  const odp = await fetch("https://www.balldontlie.io/api/v1/teams");
-  const teams = await odp.json();
-
-  return {
-    props: { teams },
-  };
-}
