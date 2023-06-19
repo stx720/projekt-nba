@@ -35,7 +35,7 @@ export default function Home() {
       (favPlayer) => favPlayer.id === player.id
     );
     if (isAlreadyFavorite) {
-      toast.info("Ten zawodnik jest już na liście ulubionych!");
+      toast.warning("Ten zawodnik jest już na liście ulubionych!");
       return;
     }
     const updatedFavorites = [...favorites, player];
