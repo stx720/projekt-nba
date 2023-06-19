@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import Modal from "react-modal";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import NextNProgress from 'nextjs-progressbar';
+import NextNProgress from "nextjs-progressbar";
 
 Modal.setAppElement("#__next");
 
@@ -31,7 +31,7 @@ export default function Team({ team, players, gry }) {
       </Head>
 
       <div className={styles.info}>
-      <NextNProgress color='orange'/>
+        <NextNProgress color="orange" />
         <p onClick={() => router.back()} className={styles.goBack}>
           <b>← Wstecz</b>
         </p>
@@ -139,14 +139,22 @@ export default function Team({ team, players, gry }) {
             </p>
 
             <p className={styles.infoGracz}>
-              <b>Pozycja:</b> {selectedPlayer.position}
+              <b>Pozycja:</b>{" "}
+              {selectedPlayer.position
+                ? selectedPlayer.position
+                : "Brak informacji"}
             </p>
             <p className={styles.infoGracz}>
-              <b>Wzrost:</b> {selectedPlayer.height_feet} feet{" "}
-              {selectedPlayer.height_inches} inches
+              <b>Wzrost:</b>{" "}
+              {selectedPlayer.height_feet
+                ? `${selectedPlayer.height_feet} feet ${selectedPlayer.height_inches} inches`
+                : "Brak informacji"}
             </p>
             <p className={styles.infoGracz}>
-              <b>Waga:</b> {selectedPlayer.weight_pounds} pounds
+              <b>Waga:</b>{" "}
+              {selectedPlayer.weight_pounds
+                ? `${selectedPlayer.weight_pounds} pounds`
+                : "Brak informacji"}
             </p>
           </div>
         )}
@@ -211,7 +219,9 @@ export async function getStaticProps(context) {
   );
   const team = await odp.json();
 
-  const odpPlayer = await fetch(`https://www.balldontlie.io/api/v1/players?per_page=100`);
+  const odpPlayer = await fetch(
+    `https://www.balldontlie.io/api/v1/players?per_page=100`
+  );
   const players = await odpPlayer.json();
 
   const odpGra = await fetch(
