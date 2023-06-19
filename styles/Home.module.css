@@ -199,8 +199,9 @@ tr:hover .daneTab {
   right: 0;
   margin-right: 20px;
   margin-top: 25px;
-  font-size: 110%;
+  font-size: 115%;
   text-decoration: none;
+  animation: shake 2.5s infinite;
 }
 
 .linkSearch {
@@ -212,6 +213,18 @@ tr:hover .daneTab {
 .linkSearch:hover {
   color: blue;
   font-size: 120%;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .gobackSearch {
