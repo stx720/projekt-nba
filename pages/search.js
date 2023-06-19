@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import NextNProgress from "nextjs-progressbar";
 import { useRouter } from "next/router";
@@ -32,7 +31,9 @@ export default function Home() {
   }, [favorites]);
 
   const addToFavorites = (player) => {
-    const isAlreadyFavorite = favorites.find((favPlayer) => favPlayer.id === player.id);
+    const isAlreadyFavorite = favorites.find(
+      (favPlayer) => favPlayer.id === player.id
+    );
     if (isAlreadyFavorite) {
       toast.info("Ten zawodnik jest już na liście ulubionych!");
       return;
@@ -147,4 +148,3 @@ export default function Home() {
     </div>
   );
 }
-
