@@ -259,6 +259,11 @@ tr:hover .daneTab {
   height: 40px;
 }
 
+.wynikSearch,
+.favoritePlayer {
+  cursor: default;
+}
+
 .inputSearch {
   font-weight: bold;
   height: 40px;
